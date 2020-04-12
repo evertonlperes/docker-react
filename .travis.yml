@@ -5,5 +5,19 @@ services:
 
 before_install:
   - docker build -t evertonluperes/docker-react -f Dockerfile.dev .
+
 script:
   - docker run -e CI=true evertonluperes/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-wicks"
+  env: "DockerWicks-env"
+  bucket_name: "elasticbeanstalk-us-east-2-786566844339"
+  bucket_path: "docker-wicks"
+
+  on:
+    branch: master
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_KEY
