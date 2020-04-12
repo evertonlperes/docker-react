@@ -1,5 +1,8 @@
 language: generic
 sudo: require
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_KEY
+
 services:
   - docker
 
@@ -19,5 +22,3 @@ deploy:
 
   on:
     branch: master
-access_key_id: "$AWS_ACCESS_KEY"
-secret_access_key: "$AWS_SECRET_KEY"
